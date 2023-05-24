@@ -172,6 +172,19 @@
                 });
         }
 
+        function updateCarro(carro) {
+            fetch(`http://localhost:3000/carros/${carro.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(carro)
+            })
+                .catch(error => {
+                    console.error('Erro ao atualizar o carro:', error);
+                });
+        }
+
         displayList();
     </script>
 
