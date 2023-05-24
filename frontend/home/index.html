@@ -42,6 +42,31 @@
                     <th>Ações</th>
                 </tr>
             </table>
+
+            <div id="editModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Editar Automóvel</h2>
+                    <form id="editForm">
+                        <label for="marca">Marca:</label>
+                        <input type="text" id="marca" name="marca" required><br>
+
+                        <label for="modelo">Modelo:</label>
+                        <input type="text" id="modelo" name="modelo" required><br>
+
+                        <label for="ano">Ano:</label>
+                        <input type="number" id="ano" name="ano" required><br>
+
+                        <label for="cor">Cor:</label>
+                        <input type="text" id="cor" name="cor" required><br>
+
+                        <label for="placa">Placa:</label>
+                        <input type="text" id="placa" name="placa" required><br>
+
+                        <input type="submit" value="Salvar">
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -90,6 +115,46 @@
                 .catch(error => {
                     console.error('Erro ao carregar os dados:', error);
                 });
+        }
+
+        function openEditModal(carro) {
+            const editModal = document.getElementById('editModal');
+            const closeBtn = editModal.querySelector('.close');
+            const editForm = editModal.querySelector('#editForm');
+            const marcaInput = editModal.querySelector('#marca');
+            const modeloInput = editModal.querySelector('#modelo');
+            const anoInput = editModal.querySelector('#ano');
+            const corInput = editModal.querySelector('#cor');
+            const placaInput = editModal.querySelector('#placa');
+
+            marcaInput.value = carro.marca;
+            modeloInput.value = carro.modelo;
+            anoInput.value = carro.ano;
+            corInput.value = carro.cor;
+            placaInput.value = carro.placa;
+
+            editModal.style.display = 'block';
+
+            closeBtn.addEventListener('click', () => {
+                editModal.style.display = 'none';
+            });
+
+            editForm.addEventListener('submit', event => {
+                event.preventDefault();
+
+                const editedCarro = {
+                    id: carro.id,
+                    marca: marcaInput.value,
+                    modelo: modeloInput.value,
+                    ano: anoInput.value,
+                    cor: corInput.value,
+                    placa: placaInput.value
+                };
+
+                // Chamada da função para atualizar o carro
+                updateCarro(editedCarro);
+                editModal.style.display = 'none';
+            });
         }
 
         displayList();
