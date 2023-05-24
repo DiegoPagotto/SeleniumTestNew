@@ -102,3 +102,23 @@ tr:nth-child(even) {
 tr:hover {
     background-color: #f5f5f5;
 }
+
+/* botões de editar e remover */
+.edit-button {
+    background-color: yellow;
+    color: black;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .delete-button {
+    background-color: red;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
