@@ -36,7 +36,7 @@
           <h1>CADASTRAR</h1>
         </b>
         <div>
-          <form>
+          <form id="carForm">
             <div>
               <label for="marca">Marca:</label>
               <input type="text" id="marca" name="marca" required />
@@ -64,5 +64,31 @@
         </div>
       </div>
     </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("carForm");
+
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+
+          const marcaInput = document.getElementById("marca");
+          const modeloInput = document.getElementById("modelo");
+          const anoInput = document.getElementById("ano");
+          const corInput = document.getElementById("cor");
+          const placaInput = document.getElementById("placa");
+
+          const carro = {
+            marca: marcaInput.value,
+            modelo: modeloInput.value,
+            ano: anoInput.value,
+            cor: corInput.value,
+            placa: placaInput.value,
+          };
+
+          console.log(carro);
+        });
+      });
+    </script>
   </body>
 </html>
