@@ -162,10 +162,7 @@
                 method: 'DELETE'
             })
                 .then(() => {
-                    const row = document.querySelector(`#carrosTable tr[data-id="${carro.id}"]`);
-                    if (row) {
-                        row.remove();
-                    }
+                    location.reload()
                 })
                 .catch(error => {
                     console.error('Erro ao deletar o carro:', error);
@@ -180,6 +177,9 @@
                 },
                 body: JSON.stringify(carro)
             })
+                .then(()=> {
+                    location.reload()
+                })
                 .catch(error => {
                     console.error('Erro ao atualizar o carro:', error);
                 });
