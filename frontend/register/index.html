@@ -86,9 +86,32 @@
             placa: placaInput.value,
           };
 
-          console.log(carro);
+          cadastraCarro(carro);
         });
       });
+
+      const cadastraCarro = (carro) => {
+        const url = "http://localhost:3000/carros";
+
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(carro),
+        })
+          .then((response) => {
+            if (response.ok) {
+              console.log("Carro cadastrado com sucesso!");
+              window.location.href = "../home/index.html";
+            } else {
+              throw new Error("Erro ao cadastrar o carro.");
+            }
+          })
+          .catch((error) => {
+            console.error("Erro ao cadastrar o carro:", error);
+          });
+      };
     </script>
   </body>
 </html>
