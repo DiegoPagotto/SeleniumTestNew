@@ -157,6 +157,21 @@
             });
         }
 
+        function deleteCarro(carro) {
+            fetch(`http://localhost:3000/carros/${carro.id}`, {
+                method: 'DELETE'
+            })
+                .then(() => {
+                    const row = document.querySelector(`#carrosTable tr[data-id="${carro.id}"]`);
+                    if (row) {
+                        row.remove();
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao deletar o carro:', error);
+                });
+        }
+
         displayList();
     </script>
 

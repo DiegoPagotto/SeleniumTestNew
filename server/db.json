@@ -1,14 +1,6 @@
 {
   "carros": [
     {
-      "marca": "Renault",
-      "modelo": "Kwid",
-      "ano": "2019",
-      "cor": "Branco",
-      "placa": "DFT0P49",
-      "id": 1
-    },
-    {
       "marca": "Ford",
       "modelo": "Mustang",
       "ano": "2023",
@@ -31,14 +23,6 @@
       "cor": "Preto",
       "placa": "ABC1234",
       "id": 4
-    },
-    {
-      "marca": "volks",
-      "modelo": "Golf",
-      "ano": "2020",
-      "cor": "Branco",
-      "placa": "DET1504",
-      "id": 5
     }
   ]
 }
