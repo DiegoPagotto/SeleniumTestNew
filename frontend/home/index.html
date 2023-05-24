@@ -45,6 +45,56 @@
         </div>
     </div>
 
+    <script>
+        function displayList() {
+            fetch('http://localhost:3000/carros')
+                .then(response => response.json())
+                .then(data => {
+                    const table = document.getElementById('carrosTable');
+                    data.forEach(carro => {
+                        const row = table.insertRow();
+                        row.insertCell().textContent = carro.id;
+                        row.insertCell().textContent = carro.marca;
+                        row.insertCell().textContent = carro.modelo;
+                        row.insertCell().textContent = carro.ano;
+                        row.insertCell().textContent = carro.cor;
+                        row.insertCell().textContent = carro.placa;
+
+                        const actionsCell = row.insertCell();
+
+                        const editButton = document.createElement('button');
+                        editButton.textContent = 'Editar';
+                        editButton.className = 'edit-button';
+                        editButton.addEventListener('click', () => {
+                            openEditModal(carro);
+                        });
+                        actionsCell.appendChild(editButton);
+
+                        // Criação do botão de deletar
+                        const deleteButton = document.createElement('button');
+                        deleteButton.textContent = 'Deletar';
+                        deleteButton.className = 'delete-button';
+                        deleteButton.addEventListener('click', () => {
+                            const row = deleteButton.parentNode.parentNode;
+                            const carroId = row.cells[0].textContent;
+
+                            const carro = {
+                                id: carroId
+                            };
+
+                            deleteCarro(carro);
+                        });
+                        actionsCell.appendChild(deleteButton);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar os dados:', error);
+                });
+        }
+
+        displayList();
+    </script>
+
 </body>
 
 </html>
